@@ -1,0 +1,50 @@
+{
+  "mcp_version": "1.0",
+  "name": "sales-mcp",
+  "description": "MCP server for querying sales data",
+  "transport": {
+    "type": "http",
+    "base_url": "https://mcp.company.com/mcp/sales"
+  },
+  "tools": [
+    {
+      "name": "query_sales",
+      "description": "Query sales using metrics, dimensions, filters, and time ranges",
+      "input_schema": {
+        "type": "object",
+        "required": ["metrics", "time_range"],
+        "properties": {
+          "metrics": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["total_sales", "boxes_shipped", "avg_sale"]
+            }
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["sales_person", "country", "product", "date"]
+            }
+          },
+          "filters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "time_range": {
+            "type": "object",
+            "required": ["start", "end"],
+            "properties": {
+              "start": { "type": "string", "format": "date" },
+              "end": { "type": "string", "format": "date" }
+            }
+          },
+          "limit": { "type": "integer" }
+        }
+      }
+    }
+  ]
+}

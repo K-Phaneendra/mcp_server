@@ -1,0 +1,10 @@
+{
+  "include": ["."],
+  "exclude": ["**/__pycache__", "venv"],
+  "strict": ["."],
+  "typeCheckingMode": "strict",
+  "pythonVersion": "3.13",
+  "reportMissingTypeStubs": true,
+  "venvPath": ".",
+  "venv": "venv"
+}
